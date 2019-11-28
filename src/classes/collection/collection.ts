@@ -496,7 +496,7 @@ export class Collection implements ICollection {
       const applyMutateResult = (expectedCount: number, res: MutateResponse) => {
         const {failures, numFailures} = res;
         successCount += expectedCount - numFailures;
-        for (let pos in failures) {
+        for (let pos of Object.getOwnPropertyNames(failures)) {
           totalFailures.push(failures[pos]);
         }
       }
