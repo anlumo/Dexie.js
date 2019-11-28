@@ -497,7 +497,9 @@ export class Collection implements ICollection {
         const {failures, numFailures} = res;
         successCount += expectedCount - numFailures;
         for (let pos of Object.getOwnPropertyNames(failures)) {
-          totalFailures.push(failures[pos]);
+          if (pos !== 'length') {
+            totalFailures.push(failures[pos]);
+          }
         }
       }
       return this.clone().primaryKeys().then(keys => {
